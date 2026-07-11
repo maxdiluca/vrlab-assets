@@ -1,0 +1,24 @@
+{
+  "name": "VR Lab Equipment",
+  "short_name": "VR Lab",
+  "description": "VR Lab equipment check-in and checkout homepage.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f2f3f7",
+  "theme_color": "#9d174d",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

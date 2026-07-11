@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#9d174d">
+    <meta name="color-scheme" content="light">
+    <meta name="referrer" content="no-referrer">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="VR Lab">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'"
+    >
+    <title>VR Lab Equipment</title>
+    <meta
+      name="description"
+      content="VR Lab equipment check-in and checkout homepage."
+    >
+    <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#equipment-groups">Skip to equipment groups</a>
+
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="VR Lab equipment home">
+        <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M9 12h30v22a5 5 0 0 1-5 5H14a5 5 0 0 1-5-5V12Z" />
+          <path d="M15 21h7l2 5 2-5h7" />
+          <path d="M17 34h14" />
+        </svg>
+        <span>
+          <strong>VR Lab</strong>
+          <small>Equipment desk</small>
+        </span>
+      </a>
+
+      <div class="connection" data-connection role="status" aria-live="polite">
+        <span class="connection-dot" aria-hidden="true"></span>
+        <span data-connection-label>Online</span>
+      </div>
+    </header>
+
+    <main class="standard-view">
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow">University of Birmingham · VR Lab</p>
+        <h1 id="page-title">Borrow or return lab equipment</h1>
+        <p class="intro">Use this iPad whenever you take equipment from the lab or bring it back.</p>
+      </section>
+
+      <div class="page-grid">
+        <section class="instruction-card" aria-labelledby="instructions-title">
+          <div class="section-heading">
+            <span class="section-number" aria-hidden="true">01</span>
+            <div>
+              <p class="kicker">Before you begin</p>
+              <h2 id="instructions-title">Four simple steps</h2>
+            </div>
+          </div>
+
+          <ol class="steps">
+            <li>
+              <span class="step-number" aria-hidden="true">1</span>
+              <span><strong>Select the equipment group</strong> from the large buttons.</span>
+            </li>
+            <li>
+              <span class="step-number" aria-hidden="true">2</span>
+              <span>In Assetbots, choose <strong>Checkout</strong> to borrow or <strong>Check In</strong> to return.</span>
+            </li>
+            <li>
+              <span class="step-number" aria-hidden="true">3</span>
+              <span>For checkout, <strong>find your name</strong>. Then scan each item’s QR label or search by asset tag.</span>
+            </li>
+            <li>
+              <span class="step-number" aria-hidden="true">4</span>
+              <span><strong>Review every item and confirm.</strong> Wait for the success message before leaving.</span>
+            </li>
+          </ol>
+
+          <div class="important-note">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3 2.8 20h18.4L12 3Z" />
+              <path d="M12 9v5M12 17.25v.1" />
+            </svg>
+            <p><strong>Cannot find the correct person or item?</strong> Do not select a similar record. Ask a member of VR Lab staff.</p>
+          </div>
+        </section>
+
+        <section class="inventory-section" id="equipment-groups" aria-labelledby="equipment-title">
+          <div class="section-heading inventory-heading">
+            <span class="section-number" aria-hidden="true">02</span>
+            <div>
+              <p class="kicker">Choose a destination</p>
+              <h2 id="equipment-title">What are you using?</h2>
+            </div>
+          </div>
+
+          <div class="setup-notice" data-setup-notice hidden role="status">
+            <strong>This iPad is not configured yet.</strong>
+            <span>A lab administrator must add the Assetbots kiosk links before these buttons can be used.</span>
+          </div>
+
+          <nav class="inventory-grid" aria-label="Assetbots equipment groups">
+            <a class="inventory-tile tile-cards" data-inventory="visitor-cards" href="#">
+              <span class="tile-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32">
+                  <rect x="5" y="7" width="22" height="18" rx="3" />
+                  <circle cx="12" cy="14" r="2.5" />
+                  <path d="M8.5 21c.7-2.2 2-3.3 3.5-3.3s2.8 1.1 3.5 3.3M19 13h5M19 17h5" />
+                </svg>
+              </span>
+              <span class="tile-copy">
+                <strong>Visitor cards</strong>
+                <small>Lab access cards</small>
+              </span>
+              <span class="tile-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a class="inventory-tile tile-headsets" data-inventory="headsets" href="#">
+              <span class="tile-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32">
+                  <path d="M7 18v-3a9 9 0 0 1 18 0v3" />
+                  <rect x="4.5" y="17" width="5.5" height="9" rx="2.3" />
+                  <rect x="22" y="17" width="5.5" height="9" rx="2.3" />
+                  <path d="M22 25c-1.2 2-3.2 3-6 3" />
+                </svg>
+              </span>
+              <span class="tile-copy">
+                <strong>Headsets</strong>
+                <small>VR and audio equipment</small>
+              </span>
+              <span class="tile-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a class="inventory-tile tile-it" data-inventory="it-equipment" href="#">
+              <span class="tile-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32">
+                  <rect x="4" y="5" width="24" height="17" rx="2.5" />
+                  <path d="M12 27h8M16 22v5M7.5 9h17v9h-17z" />
+                </svg>
+              </span>
+              <span class="tile-copy">
+                <strong>IT equipment</strong>
+                <small>Computers and monitors</small>
+              </span>
+              <span class="tile-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a class="inventory-tile tile-various" data-inventory="various" href="#">
+              <span class="tile-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32">
+                  <path d="M7 10.5 16 5l9 5.5v11L16 27l-9-5.5v-11Z" />
+                  <path d="m7 10.5 9 5.5 9-5.5M16 16v11" />
+                  <path d="m11.5 8 9 5.5" />
+                </svg>
+              </span>
+              <span class="tile-copy">
+                <strong>Various equipment</strong>
+                <small>Other lab items</small>
+              </span>
+              <span class="tile-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a class="inventory-tile tile-storage" data-inventory="storage-room" href="#">
+              <span class="tile-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32">
+                  <path d="M5 27V8l11-4 11 4v19M9 27V11h14v16" />
+                  <path d="M9 16h14M9 21.5h14M13 13h6" />
+                </svg>
+              </span>
+              <span class="tile-copy">
+                <strong>Storage room</strong>
+                <small>Equipment kept in storage</small>
+              </span>
+              <span class="tile-arrow" aria-hidden="true">→</span>
+            </a>
+          </nav>
+
+          <p class="return-hint">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 7-5 5 5 5M5 12h10a4 4 0 0 1 4 4v2" /></svg>
+            When finished, use the browser’s Back button to return here.
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <main class="setup-view" data-setup-view hidden>
+      <section class="setup-shell" aria-labelledby="setup-title">
+        <div class="setup-intro">
+          <p class="eyebrow">Administrator setup</p>
+          <h1 id="setup-title">Connect this iPad to Assetbots</h1>
+          <p>Paste each secure Assetbots kiosk launch URL below. The addresses are saved only in this browser’s local storage and are not uploaded to GitHub.</p>
+        </div>
+
+        <div class="security-note">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 10V8a6 6 0 0 1 12 0v2M5 10h14v11H5zM12 14v3" /></svg>
+          <p><strong>Use limited kiosk links, never administrator links.</strong> Test every destination in a private browser before placing this iPad at the lab entrance.</p>
+        </div>
+
+        <form class="setup-form" data-setup-form novalidate>
+          <div class="form-grid">
+            <label>
+              <span>Visitor cards</span>
+              <input name="visitor-cards" type="url" inputmode="url" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="https://app.assetbots.com/…" required>
+            </label>
+            <label>
+              <span>Headsets</span>
+              <input name="headsets" type="url" inputmode="url" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="https://app.assetbots.com/…" required>
+            </label>
+            <label>
+              <span>IT equipment</span>
+              <input name="it-equipment" type="url" inputmode="url" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="https://app.assetbots.com/…" required>
+            </label>
+            <label>
+              <span>Various equipment</span>
+              <input name="various" type="url" inputmode="url" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="https://app.assetbots.com/…" required>
+            </label>
+            <label>
+              <span>Storage room</span>
+              <input name="storage-room" type="url" inputmode="url" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="https://app.assetbots.com/…" required>
+            </label>
+          </div>
+
+          <p class="form-message" data-form-message role="status" aria-live="polite"></p>
+
+          <div class="form-actions">
+            <button class="primary-button" type="submit">Save and open homepage</button>
+            <button class="secondary-button" type="button" data-clear-config>Clear saved links</button>
+            <a class="text-link" href="./">Cancel</a>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <span>VR Lab equipment tracking</span>
+      <span aria-hidden="true">·</span>
+      <span>This page stores no borrower information.</span>
+    </footer>
+
+    <noscript>
+      <div class="noscript-message">JavaScript is required to open the configured Assetbots kiosks.</div>
+    </noscript>
+  </body>
+</html>

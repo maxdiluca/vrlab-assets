@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">VR Lab equipment</title>
+  <rect width="512" height="512" rx="112" fill="#9d174d"/>
+  <path d="M112 132h288v206c0 42-34 76-76 76H188c-42 0-76-34-76-76V132Z" fill="none" stroke="#fff" stroke-width="32" stroke-linejoin="round"/>
+  <path d="M174 224h62l20 50 20-50h62M192 348h128" fill="none" stroke="#fff" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
