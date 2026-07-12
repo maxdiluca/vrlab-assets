@@ -86,20 +86,10 @@ a {
 }
 
 .brand-mark {
-  width: 43px;
-  height: 43px;
-  padding: 8px;
-  border-radius: 13px;
-  color: white;
-  background: var(--crimson);
-}
-
-.brand-mark path {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.25;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  width: 52px;
+  height: 52px;
+  display: block;
+  object-fit: contain;
 }
 
 .brand span {
