@@ -60,7 +60,7 @@ On the iPad that will remain at the entrance:
 
 1. Open the live homepage in Safari, adding `?setup=1` to the address. For example:
 
-   `https://maxdiluca.github.io/vrlab-equipment-kiosk/?setup=1`
+   `https://maxdiluca.github.io/vrlab-assets/?setup=1`
 
 2. Paste the five tested Assetbots kiosk launch URLs and select **Save and open homepage**.
 3. Open each tile and complete a test checkout and check-in.
@@ -80,6 +80,59 @@ To replace or remove links, revisit `?setup=1`. Configure the same URLs again if
 6. Wait for the success message, then use Back to return to the homepage.
 
 If the correct person or item is missing, users should stop and ask a member of VR Lab staff rather than selecting a similar record.
+
+## Weekly minimized backup
+
+The repository includes a macOS weekly backup task for the five current Assetbots databases. It runs on Mondays at 07:00 local time and writes dated, checksummed JSON snapshots to:
+
+`Equipment queries/Assetbots Backups`
+
+This folder is outside the Git repository but inside the lab's University shared library, so OneDrive can synchronise it. Confirm that access to the destination is restricted to the appropriate lab asset administrators.
+
+The automated snapshot contains:
+
+- database metadata;
+- assets, with any related Person reduced to name and email;
+- People reduced strictly to name and email;
+- locations; and
+- record counts and SHA-256 checksums.
+
+It excludes API keys, all other Person fields, notes, attachments, complete checkout history and database configuration. It therefore supplements rather than replaces periodic native Excel exports and separate preservation of important attachments.
+
+### One-time API-key setup
+
+1. In each Assetbots database, open **Settings → API Keys** and create a **Reader** key.
+2. Run the Keychain setup script in Terminal. Paste each key only into the protected Keychain prompt—never into this repository or a chat:
+
+   ```sh
+   ./scripts/configure_assetbots_keys.sh
+   ```
+
+3. Validate the five keys without writing a backup:
+
+   ```sh
+   python3 scripts/assetbots_backup.py \
+     --output-root "../Equipment queries/Assetbots Backups" \
+     --dry-run
+   ```
+
+4. Install the weekly task:
+
+   ```sh
+   python3 scripts/manage_weekly_backup.py install
+   ```
+
+5. Create and validate the first backup:
+
+   ```sh
+   python3 scripts/manage_weekly_backup.py run-now
+   python3 scripts/assetbots_backup.py \
+     --validate "../Equipment queries/Assetbots Backups/<dated-folder>"
+   ```
+
+Inspect the task with `python3 scripts/manage_weekly_backup.py status` or remove the schedule with `python3 scripts/manage_weekly_backup.py uninstall`. Existing backups are retained when the schedule is removed.
+
+The LaunchAgent runs only while this macOS user account is available. If the Mac is routinely switched off or the staff member changes, migrate the same script to a University-managed scheduled service.
 
 ## Local development and checks
 
