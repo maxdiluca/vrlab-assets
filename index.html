@@ -17,7 +17,7 @@
     <title>VR Lab Equipment</title>
     <meta
       name="description"
-      content="VR Lab equipment check-in and checkout homepage."
+      content="VR Lab equipment inventory directory."
     >
     <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -46,8 +46,8 @@
     <main class="standard-view">
       <section class="hero" aria-labelledby="page-title">
         <p class="eyebrow">University of Birmingham · VR Lab</p>
-        <h1 id="page-title">Borrow or return lab equipment</h1>
-        <p class="intro">Use this iPad whenever you take equipment from the lab or bring it back.</p>
+        <h1 id="page-title">VR Lab equipment directory</h1>
+        <p class="intro">Choose an equipment group to open its standard Assetbots database.</p>
       </section>
 
       <div class="page-grid">
@@ -63,19 +63,19 @@
           <ol class="steps">
             <li>
               <span class="step-number" aria-hidden="true">1</span>
-              <span><strong>Select the equipment group</strong> from the large buttons.</span>
+              <span><strong>Select the equipment group</strong> from the buttons on this page.</span>
             </li>
             <li>
               <span class="step-number" aria-hidden="true">2</span>
-              <span>In Assetbots, choose <strong>Checkout</strong> to borrow or <strong>Check In</strong> to return.</span>
+              <span><strong>Sign in with your authorised account</strong> if Assetbots requests authentication.</span>
             </li>
             <li>
               <span class="step-number" aria-hidden="true">3</span>
-              <span>For checkout, <strong>find your name</strong>. Then scan each item’s QR label or search by asset tag.</span>
+              <span><strong>Find the correct asset</strong> by scanning its QR label or searching by asset tag.</span>
             </li>
             <li>
               <span class="step-number" aria-hidden="true">4</span>
-              <span><strong>Review every item and confirm.</strong> Wait for the success message before leaving.</span>
+              <span><strong>Check the record carefully</strong> before making any permitted check-in, checkout or inventory change.</span>
             </li>
           </ol>
 
@@ -84,7 +84,7 @@
               <path d="M12 3 2.8 20h18.4L12 3Z" />
               <path d="M12 9v5M12 17.25v.1" />
             </svg>
-            <p><strong>Cannot find the correct person or item?</strong> Do not select a similar record. Ask a member of VR Lab staff.</p>
+            <p><strong>Cannot find the correct asset or do not have permission?</strong> Do not use a similar record or another person’s account. Ask a VR Lab administrator.</p>
           </div>
         </section>
 
@@ -99,7 +99,7 @@
 
           <div class="setup-notice" data-setup-notice hidden role="status">
             <strong>This iPad is not configured yet.</strong>
-            <span>A lab administrator must add the Assetbots kiosk links before these buttons can be used.</span>
+            <span>A lab administrator must add the standard Assetbots database links before these buttons can be used.</span>
           </div>
 
           <nav class="inventory-grid" aria-label="Assetbots equipment groups">
@@ -191,12 +191,12 @@
         <div class="setup-intro">
           <p class="eyebrow">Administrator setup</p>
           <h1 id="setup-title">Connect this iPad to Assetbots</h1>
-          <p>Paste each secure Assetbots kiosk launch URL below. The addresses are saved only in this browser’s local storage and are not uploaded to GitHub.</p>
+          <p>Paste each standard Assetbots database URL below. The addresses are saved only in this browser’s local storage and are not uploaded to GitHub.</p>
         </div>
 
         <div class="security-note">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 10V8a6 6 0 0 1 12 0v2M5 10h14v11H5zM12 14v3" /></svg>
-          <p><strong>Use limited kiosk links, never administrator links.</strong> Test every destination in a private browser before placing this iPad at the lab entrance.</p>
+          <p><strong>Standard database pages require authentication and inherit the signed-in account’s permissions.</strong> Do not leave an administrator account signed in on a shared iPad.</p>
         </div>
 
         <form class="setup-form" data-setup-form novalidate>
@@ -241,7 +241,7 @@
     </footer>
 
     <noscript>
-      <div class="noscript-message">JavaScript is required to open the configured Assetbots kiosks.</div>
+      <div class="noscript-message">JavaScript is required to open the configured Assetbots databases.</div>
     </noscript>
   </body>
 </html>

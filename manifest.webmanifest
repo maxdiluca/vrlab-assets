@@ -1,7 +1,7 @@
 {
   "name": "VR Lab Equipment",
   "short_name": "VR Lab",
-  "description": "VR Lab equipment check-in and checkout homepage.",
+  "description": "VR Lab equipment inventory directory.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
