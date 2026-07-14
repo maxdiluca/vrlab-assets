@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
+  DEFAULT_CONFIG,
   INVENTORIES,
   STORAGE_KEY,
   clearConfig,
@@ -33,6 +34,12 @@ test("accepts secure Assetbots subdomains", () => {
   );
 });
 
+test("uses the five public kiosk destinations by default", () => {
+  const config = loadConfig(memoryStorage());
+  assert.deepEqual(config, DEFAULT_CONFIG);
+  assert.deepEqual(Object.keys(config).sort(), INVENTORIES.map(({ id }) => id).sort());
+});
+
 test("rejects insecure, unrelated and credential-bearing URLs", () => {
   assert.throws(() => normaliseAssetbotsUrl("http://app.assetbots.com/kiosk/example"));
   assert.throws(() => normaliseAssetbotsUrl("https://assetbots.example/kiosk/example"));
@@ -50,11 +57,11 @@ test("saves, loads and clears a complete configuration", () => {
   assert.ok(storage.getItem(STORAGE_KEY));
 
   clearConfig(storage);
-  assert.deepEqual(loadConfig(storage), {});
+  assert.deepEqual(loadConfig(storage), DEFAULT_CONFIG);
 });
 
 test("ignores malformed stored data", () => {
   const storage = memoryStorage();
   storage.setItem(STORAGE_KEY, "not json");
-  assert.deepEqual(loadConfig(storage), {});
+  assert.deepEqual(loadConfig(storage), DEFAULT_CONFIG);
 });

@@ -8,6 +8,16 @@ export const INVENTORIES = Object.freeze([
   Object.freeze({ id: "storage-room", label: "Storage room" }),
 ]);
 
+// Public, limited-access kiosk launch URLs. Do not place API keys or
+// administrator credentials in this client-side configuration.
+export const DEFAULT_CONFIG = Object.freeze({
+  "visitor-cards": "https://app.assetbots.com/kiosk/ko_cmrkjll92000h3b69doc4eh4j/launch",
+  headsets: "https://app.assetbots.com/kiosk/ko_cmrki4edi000h3b69us2qpkce/launch",
+  "it-equipment": "https://app.assetbots.com/kiosk/ko_cmrki1uox000j2a6k6fqpg1ct/launch",
+  various: "https://app.assetbots.com/kiosk/ko_cmrkjm4ck000h3b69xdnx5uzj/launch",
+  "storage-room": "https://app.assetbots.com/kiosk/ko_cmrkjkz0h000i3b69t1d860bf/launch",
+});
+
 export function normaliseAssetbotsUrl(value) {
   const raw = String(value ?? "").trim();
   if (!raw) {
@@ -35,12 +45,14 @@ export function normaliseAssetbotsUrl(value) {
 export function loadConfig(storage) {
   try {
     const raw = storage.getItem(STORAGE_KEY);
-    if (!raw) return {};
+    if (!raw) return { ...DEFAULT_CONFIG };
 
     const parsed = JSON.parse(raw);
-    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return {};
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+      return { ...DEFAULT_CONFIG };
+    }
 
-    const config = {};
+    const config = { ...DEFAULT_CONFIG };
     for (const inventory of INVENTORIES) {
       if (typeof parsed[inventory.id] !== "string") continue;
       try {
@@ -51,7 +63,7 @@ export function loadConfig(storage) {
     }
     return config;
   } catch {
-    return {};
+    return { ...DEFAULT_CONFIG };
   }
 }
 

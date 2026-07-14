@@ -90,7 +90,7 @@ clearButton.addEventListener("click", () => {
     clearConfig(window.localStorage);
     setupForm.reset();
     formMessage.className = "form-message is-success";
-    formMessage.textContent = "Saved links cleared from this browser.";
+    formMessage.textContent = "Device-specific links cleared. The public defaults will be used.";
   } catch {
     formMessage.className = "form-message is-error";
     formMessage.textContent = "The saved links could not be cleared.";

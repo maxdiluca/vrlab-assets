@@ -12,12 +12,12 @@ The site is dependency-free and suitable for GitHub Pages.
 
 ## Security model
 
-This repository is public, but Assetbots kiosk launch URLs can grant limited access to a database. The URLs are therefore **not committed to this repository**. They are entered once on the lab iPad and stored in that browser's `localStorage`.
+This repository is public, and the five limited-access Assetbots kiosk launch URLs are committed so the homepage works without device setup. Anyone who can access the repository or page source can retrieve and use these URLs. They must therefore expose only the intended kiosk workflow and no administrator capabilities.
 
 - The page sends no analytics or network requests.
 - It accepts only HTTPS URLs on `assetbots.com` or one of its subdomains.
-- Clearing Safari website data removes the saved destinations.
-- Browser storage protects the links from public source-code disclosure; it is not enterprise secret storage and does not protect against someone with physical or administrative access to the iPad.
+- Optional device-specific replacements are stored in Safari `localStorage`; clearing Safari website data restores the committed defaults.
+- The `noindex` directive discourages search indexing but is not access control.
 - Use Assetbots kiosk launch URLs with limited Borrower-level access. Never configure a personal or administrator session on a shared device.
 
 ## 1. Prepare Assetbots
@@ -62,7 +62,7 @@ On the iPad that will remain at the entrance:
 
    `https://maxdiluca.github.io/vrlab-assets/?setup=1`
 
-2. Paste the five tested Assetbots kiosk launch URLs and select **Save and open homepage**.
+2. The committed kiosk links load automatically. To replace any destination on this device, paste all five tested launch URLs and select **Save and open homepage**.
 3. Open each tile and complete a test checkout and check-in.
 4. Return to the homepage, tap Safari's **Share** button, then **Add to Home Screen**.
 5. Grant camera access when Assetbots first asks to scan a QR code.
