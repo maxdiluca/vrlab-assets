@@ -617,6 +617,80 @@ footer {
   }
 }
 
+/* Keep the complete desk view visible on an iPad used in landscape. */
+@media (min-width: 901px) and (max-height: 850px) {
+  .site-header {
+    min-height: 68px;
+    padding-top: max(8px, env(safe-area-inset-top));
+    padding-bottom: 6px;
+  }
+
+  .brand-mark {
+    width: 44px;
+    height: 44px;
+  }
+
+  .hero {
+    margin: 14px 0 18px;
+  }
+
+  h1 {
+    font-size: clamp(2.25rem, 4.2vw, 3.6rem);
+  }
+
+  .intro {
+    margin-top: 10px;
+    line-height: 1.35;
+  }
+
+  .instruction-card,
+  .inventory-section {
+    padding: 22px;
+  }
+
+  .steps {
+    margin-top: 14px;
+  }
+
+  .steps li {
+    min-height: 52px;
+    padding: 7px 0;
+    line-height: 1.32;
+  }
+
+  .important-note {
+    margin-top: 12px;
+    padding: 11px 13px;
+  }
+
+  .important-note p {
+    line-height: 1.35;
+  }
+
+  .inventory-heading {
+    margin-bottom: 14px;
+  }
+
+  .inventory-grid {
+    gap: 10px;
+  }
+
+  .inventory-tile {
+    min-height: 86px;
+    padding: 12px;
+  }
+
+  .return-hint {
+    margin-top: 12px;
+  }
+
+  footer {
+    min-height: 48px;
+    padding-top: 13px;
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
+  }
+}
+
 @media (max-width: 620px) {
   .site-header,
   .standard-view,
