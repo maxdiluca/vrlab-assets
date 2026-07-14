@@ -34,10 +34,13 @@ test("accepts secure Assetbots subdomains", () => {
   );
 });
 
-test("uses the five public kiosk destinations by default", () => {
+test("uses the available public kiosk destinations by default", () => {
   const config = loadConfig(memoryStorage());
   assert.deepEqual(config, DEFAULT_CONFIG);
-  assert.deepEqual(Object.keys(config).sort(), INVENTORIES.map(({ id }) => id).sort());
+  assert.deepEqual(
+    Object.keys(config).sort(),
+    INVENTORIES.map(({ id }) => id).filter((id) => id !== "it-equipment").sort(),
+  );
 });
 
 test("rejects insecure, unrelated and credential-bearing URLs", () => {
