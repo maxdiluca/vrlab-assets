@@ -12,7 +12,7 @@ export const INVENTORIES = Object.freeze([
 // administrator credentials in this client-side configuration.
 export const DEFAULT_CONFIG = Object.freeze({
   "visitor-cards": "https://app.assetbots.com/kiosk/ko_cmrkjll92000h3b69doc4eh4j/launch",
-  headsets: "https://app.assetbots.com/kiosk/ko_cmrki4edi000h3b69us2qpkce/launch",
+  headsets: "https://app.assetbots.com/kiosk/ko_cmrkpw79y000m3b69rjyk94l3/launch",
   "it-equipment": "https://app.assetbots.com/kiosk/ko_cmrki1uox000j2a6k6fqpg1ct/launch",
   various: "https://app.assetbots.com/kiosk/ko_cmrkjm4ck000h3b69xdnx5uzj/launch",
   "storage-room": "https://app.assetbots.com/kiosk/ko_cmrkjkz0h000i3b69t1d860bf/launch",
