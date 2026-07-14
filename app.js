@@ -75,7 +75,7 @@ setupForm.addEventListener("submit", (event) => {
     const values = Object.fromEntries(new FormData(setupForm));
     saveConfig(window.localStorage, values);
     formMessage.classList.add("is-success");
-    formMessage.textContent = "Saved on this device. Opening the homepage…";
+    formMessage.textContent = "Saved securely on this device. Opening the homepage…";
     window.setTimeout(() => window.location.replace("./"), 400);
   } catch (error) {
     formMessage.classList.add("is-error");

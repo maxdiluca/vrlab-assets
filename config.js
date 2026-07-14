@@ -1,4 +1,4 @@
-export const STORAGE_KEY = "vrlab.assetbots.databases.v1";
+export const STORAGE_KEY = "vrlab.assetbots.kiosks.v1";
 
 export const INVENTORIES = Object.freeze([
   Object.freeze({ id: "visitor-cards", label: "Visitor cards" }),
@@ -11,7 +11,7 @@ export const INVENTORIES = Object.freeze([
 export function normaliseAssetbotsUrl(value) {
   const raw = String(value ?? "").trim();
   if (!raw) {
-    throw new Error("Enter all five database URLs.");
+    throw new Error("Enter all five kiosk URLs.");
   }
 
   let url;
@@ -23,13 +23,9 @@ export function normaliseAssetbotsUrl(value) {
 
   const hostname = url.hostname.toLowerCase();
   const isAssetbots = hostname === "assetbots.com" || hostname.endsWith(".assetbots.com");
-  const isKioskUrl = hostname === "kiosk.assetbots.com" || url.pathname.toLowerCase().includes("/kiosk");
 
   if (url.protocol !== "https:" || !isAssetbots || url.username || url.password) {
     throw new Error("Use an HTTPS address on the assetbots.com domain.");
-  }
-  if (isKioskUrl) {
-    throw new Error("Use a standard Assetbots database address, not a kiosk link.");
   }
 
   url.hash = "";
