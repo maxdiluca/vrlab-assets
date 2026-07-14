@@ -14,7 +14,7 @@ export const DEFAULT_CONFIG = Object.freeze({
   "visitor-cards": "https://app.assetbots.com/kiosk/ko_cmrkjll92000h3b69doc4eh4j/launch",
   headsets: "https://app.assetbots.com/kiosk/ko_cmrkpw79y000m3b69rjyk94l3/launch",
   "it-equipment": "https://app.assetbots.com/kiosk/ko_cmrkpx814000h3b67d6xyghj3/launch",
-  various: "https://app.assetbots.com/kiosk/ko_cmrkjm4ck000h3b69xdnx5uzj/launch",
+  various: "https://app.assetbots.com/kiosk/ko_cmrkpy4y6000h3b69845u6hpm/launch",
   "storage-room": "https://app.assetbots.com/kiosk/ko_cmrkjkz0h000i3b69t1d860bf/launch",
 });
 
