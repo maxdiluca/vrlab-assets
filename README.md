@@ -1,6 +1,6 @@
 # VR Lab Equipment Kiosk
 
-An iPad-friendly homepage for checking VR Lab equipment in and out through Assetbots. The page provides concise instructions and five large destinations:
+An iPad-friendly homepage for checking VR Lab equipment in and out through Assetbots, with a separate authenticated route for authorised staff to add or edit assets. The borrower page provides concise instructions and five large kiosk destinations:
 
 - Visitor cards
 - Headsets
@@ -8,17 +8,22 @@ An iPad-friendly homepage for checking VR Lab equipment in and out through Asset
 - Various equipment
 - Storage-room equipment
 
+The **Authorised staff: add or edit assets** link opens a separate guidance page and then the normal Assetbots application. It does not increase the permissions of the five public kiosks.
+
 The site is dependency-free and suitable for GitHub Pages.
 
 ## Security model
 
 This repository is public, and the five limited-access Assetbots kiosk launch URLs are committed so the homepage works without device setup. Anyone who can access the repository or page source can retrieve and use these URLs. They must therefore expose only the intended kiosk workflow and no administrator capabilities.
 
+- Assetbots kiosk sessions are equivalent to the Borrower role: they can check equipment in and out but cannot add or edit assets.
+- The staff route contains only a link to the normal Assetbots application. It contains no credentials, API keys or write-capable token, but Safari may reuse an existing signed-in session.
+- Adding or editing requires an authorised Assetbots account. Use the Writer role, which is the least-privileged documented role with write access; Writer access applies across the selected database.
 - The page sends no analytics or network requests.
 - It accepts only HTTPS URLs on `assetbots.com` or one of its subdomains.
 - Optional device-specific replacements are stored in Safari `localStorage`; clearing Safari website data restores the committed defaults.
 - The `noindex` directive discourages search indexing but is not access control.
-- Use Assetbots kiosk launch URLs with limited Borrower-level access. Never configure a personal or administrator session on a shared device.
+- Do not leave a Writer, Administrator or Owner session open when the iPad returns to shared use.
 
 ## 1. Prepare Assetbots
 
@@ -34,12 +39,26 @@ For each destination:
 4. Save it, then use **More actions → Copy Launch URL**.
 5. Sign out of the administrator account and test the URL in a private browser. Confirm that it permits only the intended checkout/check-in workflow and does not expose administrative controls.
 
+For staff asset management:
+
+1. Under **Settings → Permissions**, choose **Only specific users** for every database that staff will edit.
+2. Invite each authorised staff member using their own email address and assign the **Writer** role. Do not grant Administrator or Owner solely for asset editing.
+3. Confirm that the subscription permits the required users and databases.
+4. Ask each staff member to enable two-factor authentication on their Assetbots account.
+5. Test that the account can add and edit assets but cannot manage users or permissions.
+
+The public documentation does not describe category-scoped Writer access. Treat Writer access as database-wide and do not share it with borrowers.
+
 Official references:
 
 - [Assetbots kiosks](https://help.assetbots.com/article/53-kiosks)
 - [Kiosk launch URLs and limited access](https://www.assetbots.com/blog/announcing-kiosks)
 - [Check-in and checkout](https://help.assetbots.com/article/13-check-in-and-checkout)
 - [Current pricing](https://www.assetbots.com/pricing)
+- [Database permissions and roles](https://help.assetbots.com/article/25-making-your-database-private)
+- [Adding assets](https://help.assetbots.com/article/11-adding-assets)
+- [Mobile access](https://help.assetbots.com/article/38-mobile-access)
+- [Two-factor authentication](https://help.assetbots.com/article/28-account-two-factor-authentication)
 - [Account terms](https://www.assetbots.com/terms)
 
 ## 2. Publish with GitHub Pages
@@ -66,7 +85,8 @@ On the iPad that will remain at the entrance:
 3. Open each tile and complete a test checkout and check-in.
 4. Return to the homepage, tap Safari's **Share** button, then **Add to Home Screen**.
 5. Grant camera access when Assetbots first asks to scan a QR code.
-6. Use iPad Guided Access or the University's device-management controls to keep the device in the approved workflow.
+6. Use iPad Guided Access or the University's device-management controls for the borrower workflow. Authorised staff must exit it first if it prevents opening the separate Assetbots tab.
+7. Open **Authorised staff: add or edit assets**. In a signed-out or private session, verify that Assetbots requests authentication; if it opens directly, verify the named Writer account before editing. Sign out, close the staff tab, open a kiosk tile and re-enable Guided Access before returning the iPad to shared use.
 
 To replace or remove links, revisit `?setup=1`. Configure the same URLs again if Safari website data is cleared or the iPad is replaced.
 
@@ -80,6 +100,17 @@ To replace or remove links, revisit `?setup=1`. Configure the same URLs again if
 6. Wait for the success message, then use Back to return to the homepage.
 
 If the correct person or item is missing, users should stop and ask a member of VR Lab staff rather than selecting a similar record.
+
+## Instructions for authorised staff
+
+1. On the kiosk homepage, select **Authorised staff: add or edit assets**.
+2. Exit Guided Access or managed kiosk mode if it blocks the separate tab. Open the staff workspace, sign in if prompted and verify that Assetbots shows your named account with Writer access to the relevant database.
+3. Choose the correct database. Use **Add Asset** for a new item, or scan/search for an existing asset and open its detail view to edit it.
+4. Check the category, asset tag and all changed fields before saving.
+5. Sign out of Assetbots and close the staff tab.
+6. Return to the kiosk homepage, open any equipment tile and re-enable Guided Access or the approved managed mode. Confirm that Assetbots shows the limited kiosk interface before leaving the iPad for shared use.
+
+Do not assume that a new tab creates a separate session: Safari can reuse an account that is already signed in. Do not use another person's account or save Assetbots credentials in this repository, the setup form or an iPad note. The staff link is intentionally separate because an Assetbots kiosk cannot be upgraded to Writer access.
 
 ## Weekly minimized backup
 
@@ -148,4 +179,4 @@ Then open `http://localhost:4173` from this directory. Run the configuration tes
 npm test
 ```
 
-Before deployment, test portrait and landscape layouts, 200% browser zoom, keyboard navigation, VoiceOver, online/offline status, every destination, camera permission, checkout, check-in and the route back to the homepage.
+Before deployment, test portrait and landscape layouts, 200% browser zoom, keyboard navigation, VoiceOver, online/offline status, every kiosk destination, camera permission, checkout, check-in, the `?staff=1` route, unauthenticated denial, authorised Writer add/edit access, sign-out and the route back to the limited kiosk.

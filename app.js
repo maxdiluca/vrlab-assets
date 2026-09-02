@@ -5,9 +5,11 @@ import {
   saveConfig,
 } from "./config.js";
 
+const skipLink = document.querySelector(".skip-link");
 const connection = document.querySelector("[data-connection]");
 const connectionLabel = document.querySelector("[data-connection-label]");
 const setupNotice = document.querySelector("[data-setup-notice]");
+const staffView = document.querySelector("[data-staff-view]");
 const setupView = document.querySelector("[data-setup-view]");
 const setupForm = document.querySelector("[data-setup-form]");
 const formMessage = document.querySelector("[data-form-message]");
@@ -20,6 +22,18 @@ function updateConnectionStatus() {
   const online = navigator.onLine;
   connection.classList.toggle("is-offline", !online);
   connectionLabel.textContent = online ? "Online" : "Offline";
+}
+
+function configureSkipTarget(selector, label) {
+  const target = document.querySelector(selector);
+  if (!target) return;
+
+  skipLink.href = `#${target.id}`;
+  skipLink.textContent = label;
+  skipLink.addEventListener("click", (event) => {
+    event.preventDefault();
+    target.focus();
+  });
 }
 
 function configureTiles(config) {
@@ -52,12 +66,20 @@ function showSetup() {
   document.body.classList.add("is-setup");
   document.querySelector(".standard-view").hidden = true;
   setupView.hidden = false;
+  configureSkipTarget("#setup-title", "Skip to setup");
 
   const current = loadConfig(window.localStorage);
   for (const inventory of INVENTORIES) {
     const input = setupForm.elements.namedItem(inventory.id);
     if (input && current[inventory.id]) input.value = current[inventory.id];
   }
+}
+
+function showStaff() {
+  document.body.classList.add("is-staff");
+  document.querySelector(".standard-view").hidden = true;
+  staffView.hidden = false;
+  configureSkipTarget("#staff-title", "Skip to staff workspace");
 }
 
 for (const tile of tiles.values()) {
@@ -75,7 +97,7 @@ setupForm.addEventListener("submit", (event) => {
     const values = Object.fromEntries(new FormData(setupForm));
     saveConfig(window.localStorage, values);
     formMessage.classList.add("is-success");
-    formMessage.textContent = "Saved securely on this device. Opening the homepage…";
+    formMessage.textContent = "Saved on this device. Opening the homepage…";
     window.setTimeout(() => window.location.replace("./"), 400);
   } catch (error) {
     formMessage.classList.add("is-error");
@@ -104,6 +126,8 @@ updateConnectionStatus();
 const parameters = new URLSearchParams(window.location.search);
 if (parameters.get("setup") === "1") {
   showSetup();
+} else if (parameters.get("staff") === "1") {
+  showStaff();
 } else {
   configureTiles(loadConfig(window.localStorage));
 }

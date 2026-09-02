@@ -141,7 +141,8 @@ a {
 }
 
 .standard-view,
-.setup-view {
+.setup-view,
+.staff-view {
   width: min(1320px, calc(100% - 40px));
   margin: 0 auto;
 }
@@ -192,7 +193,8 @@ h1 {
 
 .instruction-card,
 .inventory-section,
-.setup-shell {
+.setup-shell,
+.staff-shell {
   border: 1px solid rgba(221, 226, 234, 0.9);
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.92);
@@ -366,7 +368,7 @@ h2 {
 .inventory-tile:focus-visible,
 button:focus-visible,
 input:focus-visible,
-.reporting-link a:focus-visible,
+.utility-links a:focus-visible,
 .text-link:focus-visible,
 .brand:focus-visible {
   outline: 3px solid rgba(157, 23, 77, 0.32);
@@ -460,21 +462,45 @@ input:focus-visible,
   stroke-linejoin: round;
 }
 
-.reporting-link {
+.utility-links {
   margin: 18px 0 0;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
-.reporting-link a {
+.utility-links a {
   min-height: 44px;
-  padding: 8px 14px;
+  padding: 8px 15px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   border-radius: 10px;
-  color: var(--crimson);
   font-size: 0.84rem;
   font-weight: 750;
+}
+
+.staff-entry-link {
+  border: 1px solid rgba(157, 23, 77, 0.2);
+  color: var(--crimson);
+  background: rgba(255, 255, 255, 0.76);
+  text-decoration: none;
+}
+
+.staff-entry-link:hover {
+  border-color: rgba(157, 23, 77, 0.42);
+  background: white;
+}
+
+.staff-entry-link span {
+  font-size: 1.05rem;
+}
+
+.reporting-link {
+  color: var(--crimson);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -491,33 +517,97 @@ footer {
   font-size: 0.75rem;
 }
 
-.setup-view {
+.setup-view,
+.staff-view {
   max-width: 920px;
   padding: 34px 0 10px;
 }
 
 .setup-view[hidden],
+.staff-view[hidden],
 .standard-view[hidden] {
   display: none;
 }
 
-.setup-shell {
+.setup-shell,
+.staff-shell {
   padding: clamp(24px, 5vw, 54px);
 }
 
-.setup-intro {
+.setup-intro,
+.staff-intro {
   max-width: 720px;
 }
 
-.setup-intro h1 {
+.setup-intro h1,
+.staff-intro h1 {
   font-size: clamp(2.1rem, 5vw, 3.8rem);
 }
 
-.setup-intro > p:last-child {
+.setup-intro > p:last-child,
+.staff-intro > p:last-child {
   margin: 18px 0 0;
   color: var(--muted);
   font-size: 1.02rem;
   line-height: 1.55;
+}
+
+.staff-layout {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+  gap: 30px;
+  align-items: start;
+}
+
+.staff-steps {
+  margin-top: 15px;
+}
+
+.staff-access-card {
+  padding: 22px;
+  display: grid;
+  gap: 15px;
+  border: 1px solid #d9dce5;
+  border-radius: var(--radius-md);
+  background: var(--surface-soft);
+}
+
+.staff-access-card h2,
+.staff-access-card p {
+  margin: 0;
+}
+
+.staff-access-card > p:not(.kicker) {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.staff-session-warning {
+  padding: 12px 13px;
+  display: grid;
+  gap: 4px;
+  border: 1px solid #e7d29a;
+  border-radius: 12px;
+  color: #655427;
+  background: #fff9ea;
+}
+
+.staff-session-warning strong {
+  font-size: 0.86rem;
+}
+
+.staff-session-warning span {
+  font-size: 0.82rem;
+  line-height: 1.42;
+}
+
+.staff-access-card .primary-button,
+.staff-access-card .text-link {
+  width: 100%;
+  gap: 8px;
+  text-decoration: none;
 }
 
 .security-note {
@@ -634,6 +724,10 @@ footer {
 
   .hero {
     margin-top: 24px;
+  }
+
+  .staff-layout {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -853,6 +947,7 @@ footer {
   .site-header,
   .standard-view,
   .setup-view,
+  .staff-view,
   footer {
     width: min(100% - 24px, 1320px);
   }
@@ -863,7 +958,8 @@ footer {
 
   .instruction-card,
   .inventory-section,
-  .setup-shell {
+  .setup-shell,
+  .staff-shell {
     padding: 20px;
     border-radius: 20px;
   }
@@ -885,6 +981,11 @@ footer {
   footer {
     flex-wrap: wrap;
     text-align: center;
+  }
+
+  .utility-links {
+    align-items: stretch;
+    flex-direction: column;
   }
 
   .form-actions {
@@ -911,6 +1012,7 @@ footer {
 @media print {
   .connection,
   .return-hint,
+  .utility-links,
   footer {
     display: none;
   }

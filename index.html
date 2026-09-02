@@ -17,7 +17,7 @@
     <title>VR Lab Equipment</title>
     <meta
       name="description"
-      content="VR Lab equipment check-in and checkout homepage."
+      content="VR Lab equipment check-in, checkout and authorised staff management launcher."
     >
     <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -185,18 +185,77 @@
         </section>
       </div>
 
-      <p class="reporting-link">
-        <a href="https://forms.cloud.microsoft/e/c6GPe4hNZS" target="_blank" rel="noopener noreferrer">
+      <nav class="utility-links" aria-label="Additional equipment actions">
+        <a class="staff-entry-link" href="./?staff=1">
+          <strong>Authorised staff:</strong> add or edit assets
+          <span aria-hidden="true">→</span>
+        </a>
+        <a class="reporting-link" href="https://forms.cloud.microsoft/e/c6GPe4hNZS" target="_blank" rel="noopener noreferrer">
           Suggestions, concerns and problem reporting
         </a>
-      </p>
+      </nav>
+    </main>
+
+    <main class="staff-view" data-staff-view hidden>
+      <section class="staff-shell" aria-labelledby="staff-title">
+        <div class="staff-intro">
+          <p class="eyebrow">Authorised staff only</p>
+          <h1 id="staff-title" tabindex="-1">Add or edit lab assets</h1>
+          <p>Asset management uses the normal Assetbots application, separately from the public check-in and checkout kiosks.</p>
+        </div>
+
+        <div class="security-note">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 10V8a6 6 0 0 1 12 0v2M5 10h14v11H5zM12 14v3" /></svg>
+          <p><strong>Writer access is database-wide.</strong> It is not limited by the equipment filters used in kiosk mode. Sign in only with an authorised individual account and never place credentials or API keys in this page.</p>
+        </div>
+
+        <div class="staff-layout">
+          <section aria-labelledby="staff-steps-title">
+            <p class="kicker">Staff workflow</p>
+            <h2 id="staff-steps-title">Make a controlled change</h2>
+            <ol class="steps staff-steps">
+              <li>
+                <span class="step-number" aria-hidden="true">1</span>
+                <span><strong>Exit Guided Access if it is active.</strong> Open the staff workspace, sign in if prompted and verify your named Writer account.</span>
+              </li>
+              <li>
+                <span class="step-number" aria-hidden="true">2</span>
+                <span><strong>Choose the correct database</strong>, then scan or search for the asset. Use <strong>Add Asset</strong> if it is new.</span>
+              </li>
+              <li>
+                <span class="step-number" aria-hidden="true">3</span>
+                <span><strong>Check the category, asset tag and details</strong> before saving an addition or edit.</span>
+              </li>
+              <li>
+                <span class="step-number" aria-hidden="true">4</span>
+                <span><strong>Sign out and close the staff tab</strong>, then open a kiosk tile and re-enable Guided Access before returning the iPad to shared use.</span>
+              </li>
+            </ol>
+          </section>
+
+          <aside class="staff-access-card" aria-labelledby="staff-access-title">
+            <p class="kicker">Authenticated access</p>
+            <h2 id="staff-access-title">Assetbots staff workspace</h2>
+            <p>The link grants no permission by itself. Writer is the least-privileged Assetbots role documented to add or edit records.</p>
+            <div class="staff-session-warning">
+              <strong>Check the session before editing</strong>
+              <span>If Assetbots opens without a sign-in prompt, verify that it shows your named Writer account. A new tab does not isolate an existing Safari session.</span>
+            </div>
+            <a class="primary-button" href="https://app.assetbots.com/" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">
+              Open staff workspace
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a class="text-link" href="./">Return to borrower kiosk</a>
+          </aside>
+        </div>
+      </section>
     </main>
 
     <main class="setup-view" data-setup-view hidden>
       <section class="setup-shell" aria-labelledby="setup-title">
         <div class="setup-intro">
           <p class="eyebrow">Administrator setup</p>
-          <h1 id="setup-title">Connect this iPad to Assetbots</h1>
+          <h1 id="setup-title" tabindex="-1">Connect this iPad to Assetbots</h1>
           <p>Paste each secure Assetbots kiosk launch URL below. The addresses are saved only in this browser’s local storage and are not uploaded to GitHub.</p>
         </div>
 
